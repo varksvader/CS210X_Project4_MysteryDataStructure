@@ -6,7 +6,7 @@ import com.cs210x.*;
   */
 public class ExperimentRunner {
 	private static final int NUM_DATA_STRUCTURES_TO_DEDUCE = 5;
-	private static final int numRecurrences = 5; // the number of repeated method calls to form average time
+	private static final int numRecurrences = 10; // the number of repeated method calls to form average time
 
 	public static void main (String[] args) {
 		final String cs210XTeamIDForProject4 = "vsinha2";
@@ -127,6 +127,7 @@ public class ExperimentRunner {
 		}
 	}
 
+	// is there a better way to do this?
 	private static void doMethod(Collection210X<Integer> dataStructure, String method, int i, int[] Ns) {
 		Random random = new Random();
 		int numToFind = random.nextInt(Ns[i]);
