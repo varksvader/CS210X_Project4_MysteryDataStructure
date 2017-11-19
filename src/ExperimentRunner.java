@@ -26,6 +26,11 @@ public class ExperimentRunner {
 			mysteryDataStructures[i] = MysteryDataStructure.getMysteryDataStructure(cs210XTeamIDForProject4.hashCode(),
 					i, new Integer(0));
 		}
+		
+		// printing values
+		for(int n = 0; n < mysteryDataStructures.length; n++) {
+			printValues(mysteryDataStructures[n], n, Ns);
+		}
 
 		// Write your code here...
 //		final int N = 100;
@@ -34,58 +39,7 @@ public class ExperimentRunner {
 //				mysteryDataStructures[j].add(new Integer(i));
 //			}
 //		}
-
-		// for the first data structure
-		long[] addTimes = getAverageTimeCost(mysteryDataStructures[0], "add", Ns);
-		long[] removeTimes = getAverageTimeCost(mysteryDataStructures[0], "remove", Ns);
-		long[] containsTimes = getAverageTimeCost(mysteryDataStructures[0], "contains", Ns);
-		System.out.println("\n");
-		System.out.println("Data structure 1");
-		System.out.println("N: " + Arrays.toString(Ns));
-		System.out.println("Add times: " + Arrays.toString(addTimes));
-		System.out.println("Remove times: " + Arrays.toString(removeTimes));
-		System.out.println("Contains times: " + Arrays.toString(containsTimes));
-
-		addTimes = getAverageTimeCost(mysteryDataStructures[1], "add", Ns);
-		removeTimes = getAverageTimeCost(mysteryDataStructures[1], "remove", Ns);
-		containsTimes = getAverageTimeCost(mysteryDataStructures[1], "contains", Ns);
-		System.out.println("\n");
-		System.out.println("Data structure 2");
-		System.out.println("N: " + Arrays.toString(Ns));
-		System.out.println("Add times: " + Arrays.toString(addTimes));
-		System.out.println("Remove times: " + Arrays.toString(removeTimes));
-		System.out.println("Contains times: " + Arrays.toString(containsTimes));
-
-		addTimes = getAverageTimeCost(mysteryDataStructures[2], "add", Ns);
-		removeTimes = getAverageTimeCost(mysteryDataStructures[2], "remove", Ns);
-		containsTimes = getAverageTimeCost(mysteryDataStructures[2], "contains", Ns);
-		System.out.println("\n");
-		System.out.println("Data structure 3");
-		System.out.println("N: " + Arrays.toString(Ns));
-		System.out.println("Add times: " + Arrays.toString(addTimes));
-		System.out.println("Remove times: " + Arrays.toString(removeTimes));
-		System.out.println("Contains times: " + Arrays.toString(containsTimes));
-
-		addTimes = getAverageTimeCost(mysteryDataStructures[3], "add", Ns);
-		removeTimes = getAverageTimeCost(mysteryDataStructures[3], "remove", Ns);
-		containsTimes = getAverageTimeCost(mysteryDataStructures[3], "contains", Ns);
-		System.out.println("\n");
-		System.out.println("Data structure 4");
-		System.out.println("N: " + Arrays.toString(Ns));
-		System.out.println("Add times: " + Arrays.toString(addTimes));
-		System.out.println("Remove times: " + Arrays.toString(removeTimes));
-		System.out.println("Contains times: " + Arrays.toString(containsTimes));
-
-		addTimes = getAverageTimeCost(mysteryDataStructures[4], "add", Ns);
-		removeTimes = getAverageTimeCost(mysteryDataStructures[4], "remove", Ns);
-		containsTimes = getAverageTimeCost(mysteryDataStructures[4], "contains", Ns);
-		System.out.println("\n");
-		System.out.println("Data structure 5");
-		System.out.println("N: " + Arrays.toString(Ns));
-		System.out.println("Add times: " + Arrays.toString(addTimes));
-		System.out.println("Remove times: " + Arrays.toString(removeTimes));
-		System.out.println("Contains times: " + Arrays.toString(containsTimes));
-
+		
 		// Write a table of numbers (for different N -- here, we are just showing one value for simplicity) showing
 		// the relationship between N and the time-cost associated with searching (with the contains method) through
 		// a collection of N data.
@@ -95,6 +49,24 @@ public class ExperimentRunner {
 //		System.out.println(Arrays.toString(containsTimes));
 	}
 
+	/**
+	 * Prints our the average time cost of add, remove, and contains functions
+	 * @param dataStructure
+	 * @param num
+	 * @param Ns
+	 */
+	private static void printValues(Collection210X<Integer> dataStructure, int num, int[] Ns) {
+		long[] addTimes = getAverageTimeCost(dataStructure, "add", Ns);
+		long[] removeTimes = getAverageTimeCost(dataStructure, "remove", Ns);
+		long[] containsTimes = getAverageTimeCost(dataStructure, "contains", Ns);
+		System.out.println("\n");
+		System.out.println("Data structure " + num);
+		System.out.println("N: " + Arrays.toString(Ns));
+		System.out.println("Add times: " + Arrays.toString(addTimes));
+		System.out.println("Remove times: " + Arrays.toString(removeTimes));
+		System.out.println("Contains times: " + Arrays.toString(containsTimes));
+	}
+	
 	/**
 	 * Returns an array of the average time costs for all ints in instance variable Ns for the given data structure
 	 * @param dataStructure The mystery data structure
@@ -127,7 +99,7 @@ public class ExperimentRunner {
 		}
 	}
 
-	// is there a better way to do this?
+	// is there a better way to do this? Not that I know of
 	private static void doMethod(Collection210X<Integer> dataStructure, String method, int i, int[] Ns) {
 		Random random = new Random();
 		int numToFind = random.nextInt(Ns[i]);
