@@ -11,8 +11,27 @@ public class ExperimentRunner {
 	public static void main (String[] args) {
 		final String cs210XTeamIDForProject4 = "vsinha2";
 
-		final int[] Ns = { 1, 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 
-				1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000 };
+		final int[] Ns = { 10, 20, 30, 40, 50, 60, 70, 80, 90,
+				100, 200, 300, 400, 500, 600, 700, 800, 900,
+				110, 210, 310, 410, 510, 610, 710, 810, 910,
+				120, 220, 320, 420, 520, 620, 720, 820, 920,
+				130, 230, 330, 430, 530, 630, 730, 830, 930,
+				140, 240, 340, 440, 540, 640, 740, 840, 940,
+				150, 250, 350, 450, 550, 650, 750, 850, 950,
+				160, 260, 360, 460, 560, 660, 760, 860, 960,
+				170, 270, 370, 470, 570, 670, 770, 870, 970,
+				180, 280, 380, 480, 580, 680, 780, 880, 980,
+				190, 290, 390, 490, 590, 690, 790, 890, 990,
+				1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900,
+				2110, 2210, 2310, 2410, 2510, 2610, 2710, 2810, 2910,
+				3120, 3220, 3320, 3420, 3520, 3620, 3720, 3820, 3920,
+				4130, 4230, 4330, 4430, 4530, 4630, 4730, 4830, 4930,
+				5140, 5240, 5340, 5440, 5540, 5640, 5740, 5840, 5940,
+				6150, 6250, 6350, 6450, 6550, 6650, 6750, 6850, 6950,
+				7160, 7260, 7360, 7460, 7560, 7660, 7760, 7860, 7960,
+				8170, 8270, 8370, 8470, 8570, 8670, 8770, 8870, 8970,
+				9180, 9280, 9380, 9480, 9580, 9680, 9780, 9880, 9980,
+				10000};
 
 		// Fetch the collections whose type you must deduce.
 		// Note -- you are free to change the type parameter from Integer to whatever you want. In this
@@ -22,6 +41,7 @@ public class ExperimentRunner {
 		@SuppressWarnings("unchecked")
 		final Collection210X<Integer>[] mysteryDataStructures =
 				(Collection210X<Integer>[]) new Collection210X[NUM_DATA_STRUCTURES_TO_DEDUCE];
+		System.out.println("N: " + Arrays.toString(Ns) + "\n");
 		for (int i = 0; i < NUM_DATA_STRUCTURES_TO_DEDUCE; i++) {
 			mysteryDataStructures[i] = MysteryDataStructure.getMysteryDataStructure(cs210XTeamIDForProject4.hashCode(),
 					i, new Integer(0));
@@ -40,7 +60,7 @@ public class ExperimentRunner {
 		long[] removeTimes = getAverageTimeCost(dataStructure, "remove", Ns);
 		long[] containsTimes = getAverageTimeCost(dataStructure, "contains", Ns);
 		System.out.println("Data structure " + num);
-		System.out.println("N: " + Arrays.toString(Ns));
+		//System.out.println("N: " + Arrays.toString(Ns));
 		System.out.println("Add times: " + Arrays.toString(addTimes));
 		System.out.println("Remove times: " + Arrays.toString(removeTimes));
 		System.out.println("Contains times: " + Arrays.toString(containsTimes) + "\n");
