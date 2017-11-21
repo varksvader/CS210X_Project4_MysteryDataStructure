@@ -9,8 +9,8 @@ public class ExperimentRunner {
 	private static final int NUM_DATA_STRUCTURES_TO_DEDUCE = 5;
 	private static final int NUM_RECURRENCES = 100; // the number of repeated method calls to form average time
 
-	// main method
-	public static void main (String[] args) {
+	// Main Method
+	public static void main(String[] args) {
 		final String cs210XTeamIDForProject4 = "vsinha2";
 		final int[] Ns = {10, 20, 30, 40, 50, 60, 70, 80, 90,
 				100, 200, 300, 400, 500, 600, 700, 800, 900,
@@ -39,9 +39,11 @@ public class ExperimentRunner {
 		final Collection210X<Integer>[] mysteryDataStructures =
 				(Collection210X<Integer>[]) new Collection210X[NUM_DATA_STRUCTURES_TO_DEDUCE];
 		
+		// Prints out n values
 		System.out.println("N: " + Arrays.toString(Ns) + "\n");
 		
-		for (int i = 0; i < NUM_DATA_STRUCTURES_TO_DEDUCE; i++) {
+		// Prints out the time costs of all mystery data structures for all functions (add, remove, contains)
+		for(int i = 0; i < NUM_DATA_STRUCTURES_TO_DEDUCE; i++) {
 			mysteryDataStructures[i] = MysteryDataStructure.getMysteryDataStructure(
 					cs210XTeamIDForProject4.hashCode(), i, new Integer(0));
 			printValues(mysteryDataStructures[i], i, Ns);
@@ -49,7 +51,7 @@ public class ExperimentRunner {
 	}
 
 	/**
-	 * Prints out the average time cost of add, remove, and contains functions
+	 * Prints out the average time cost of add, remove, and contains functions of the given data structure
 	 * of the specified data structure using the given list of Ns
 	 * @param dataStructure the mystery data structure
 	 * @param num the number associated with the mystery data structure
@@ -66,10 +68,11 @@ public class ExperimentRunner {
 	}
 	
 	/**
-	 * Returns an array of the average time costs for all ints in instance variable Ns for the given data structure
+	 * Returns an array of the average time costs of the given method for all ints in instance variable Ns 
+	 * for the given data structure
 	 * @param dataStructure the mystery data structure
 	 * @param method the method ("contains", "add", "remove") to test
-	 * @return an array of the average times for the given method (contains(o), add(o), or remove(o)
+	 * @return an array of the average times for the given method (contains(o), add(o), or remove(o))
 	 * and given data structure
 	 */
 	private static long[] getAverageTimeCost(Collection210X<Integer> dataStructure, String method, int[] Ns) {
@@ -92,7 +95,7 @@ public class ExperimentRunner {
 	}
 
 	/**
-	 * Fills each data structure to the specified N
+	 * Fills each data structure to the given N
 	 * @param dataStructure the mystery data structure
 	 * @param N the number of elements in the mystery data structure
 	 */
@@ -104,11 +107,11 @@ public class ExperimentRunner {
 	}
 
 	/**
-	 * Performs the specified method with the specified dataStructure with Ns[i] elements
+	 * Performs the specified method with the given data structure with Ns[i] elements
 	 * @param dataStructure the mystery data structure
 	 * @param method the method ("contains", "add", "remove") to test
-	 * @param i the element number in dataStructure
-	 * @param Ns the list of possible number of elements in the dataStructure
+	 * @param i the element number in the mystery data structure
+	 * @param Ns the list of possible number of elements in the mystery data structure
 	 */
 	private static void doMethod(Collection210X<Integer> dataStructure, String method, int i, int[] Ns) {
 		final Random random = new Random();
