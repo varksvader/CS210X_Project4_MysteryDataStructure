@@ -56,9 +56,9 @@ public class ExperimentRunner {
 	 * @param Ns the list of possible number of elements in the dataStructure
 	 */
 	private static void printValues(Collection210X<Integer> dataStructure, int num, int[] Ns) {
-		long[] addTimes = getAverageTimeCost(dataStructure, "add", Ns);
-		long[] removeTimes = getAverageTimeCost(dataStructure, "remove", Ns);
-		long[] containsTimes = getAverageTimeCost(dataStructure, "contains", Ns);
+		final long[] addTimes = getAverageTimeCost(dataStructure, "add", Ns);
+		final long[] removeTimes = getAverageTimeCost(dataStructure, "remove", Ns);
+		final long[] containsTimes = getAverageTimeCost(dataStructure, "contains", Ns);
 		System.out.println("Data structure " + num);
 		System.out.println("Add times: " + Arrays.toString(addTimes));
 		System.out.println("Remove times: " + Arrays.toString(removeTimes));
@@ -111,8 +111,8 @@ public class ExperimentRunner {
 	 * @param Ns the list of possible number of elements in the dataStructure
 	 */
 	private static void doMethod(Collection210X<Integer> dataStructure, String method, int i, int[] Ns) {
-		Random random = new Random();
-		int numToFind = random.nextInt(Ns[i]);
+		final Random random = new Random();
+		final int numToFind = random.nextInt(Ns[i]);
 		if (method.equals("contains")) {
 			dataStructure.contains(numToFind);
 		} else if (method.equals("remove")) {
