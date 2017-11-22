@@ -58,6 +58,7 @@ public class ExperimentRunner {
 	 * @param Ns the list of possible number of elements in the dataStructure
 	 */
 	private static void printValues(Collection210X<Integer> dataStructure, int num, int[] Ns) {
+		// Get an array of times for each method acted on the data structure
 		final long[] addTimes = getAverageTimeCost(dataStructure, "add", Ns);
 		final long[] removeTimes = getAverageTimeCost(dataStructure, "remove", Ns);
 		final long[] containsTimes = getAverageTimeCost(dataStructure, "contains", Ns);
@@ -85,10 +86,12 @@ public class ExperimentRunner {
 			// repeats calculation multiple times to get an average time
 			for (int j = 0; j < NUM_RECURRENCES; j++) {
 				final long start = CPUClock.getNumTicks();
+				// performs the method from the given string
 				doMethod(dataStructure, method, i, Ns);
 				final long end = CPUClock.getNumTicks();
 				sum += (end - start);
 			}
+			// takes the average
 			averageTimes[i] = sum / NUM_RECURRENCES;
 		}
 		return averageTimes;
